@@ -1,4 +1,7 @@
 onlyBuiltDependencies:
-  - "@prisma/engines"
+  - '@prisma/engines'
+  - '@tailwindcss/oxide'
+  - esbuild
   - prisma
-  - better-sqlite3
+  - sharp
+  - unrs-resolver

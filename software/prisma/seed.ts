@@ -1,6 +1,7 @@
-import { prisma } from "@/lib/prisma"
+import { Pico, Prisma, PrismaClient, Robot } from "@/lib/generated/prisma/client"
 import { faker } from "@faker-js/faker"
-import { Pico, Prisma, Robot } from "../lib/generated/prisma"
+import { PrismaPg } from "@prisma/adapter-pg"
+import "dotenv/config"
 
 const NUM_PICOS = 20
 const NUM_ROBOTS = 20
@@ -8,6 +9,14 @@ const NUM_COMMANDS = 50
 
 const tenMinutesAgo = new Date(Date.now() - 1000 * 60 * 10) // 1 hour ago
 const now = new Date()
+
+const adapter = new PrismaPg({
+  connectionString: process.env.DATABASE_URL,
+})
+
+const prisma = new PrismaClient({
+  adapter,
+})
 
 function generatePicos(): Prisma.PicoCreateInput[] {
   return Array.from({ length: NUM_PICOS }).map(() => ({
