@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma"
 import { faker } from "@faker-js/faker"
-import { Pico, Prisma, Robot } from "../app/generated/prisma"
+import { Pico, Prisma, Robot } from "../lib/generated/prisma"
 
 const NUM_PICOS = 20
 const NUM_ROBOTS = 20
